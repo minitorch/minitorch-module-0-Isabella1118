@@ -208,8 +208,15 @@ def reduce(
          $x_1 \ldots x_n$ and computes the reduction :math:`fn(x_3, fn(x_2,
          fn(x_1, x_0)))`
     """
+
     # TODO: Implement for Task 0.3.
-    return lambda ls: reduce(fn, fn(start, ls[0]))(ls[1:]) if ls else start
+    def reduce_func(ls: Iterable[float]) -> float:
+        acc = start
+        for ele in ls:
+            acc = fn(acc, ele)
+        return acc
+
+    return reduce_func
     raise NotImplementedError("Need to implement for Task 0.3")
 
 
